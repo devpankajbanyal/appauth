@@ -1,21 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import RootNavigator from './navigation/RootNavigator';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SafeAreaView from 'react-native-safe-area-view';
+import { Provider } from 'react-redux';
+import store from './Redux/store';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+	return (
+		<SafeAreaProvider>
+			<SafeAreaView style={{ flex: 1 }} forceInset={{ top: 'always' }}>
+				<Provider store={store}>
+					<RootNavigator />
+				</Provider>
+			</SafeAreaView>
+		</SafeAreaProvider>
+	);
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
