@@ -1,4 +1,13 @@
-import { LOG_IN, LOG_OUT, REDIRECTING, ERROR, REGISTER, REGISTER_ERROR, LOGIN_ERROR } from '../constants/types';
+import {
+	LOG_IN,
+	LOG_OUT,
+	REDIRECTING,
+	ERROR,
+	REGISTER,
+	REGISTER_ERROR,
+	LOGIN_ERROR,
+	LOGGED_IN
+} from '../constants/types';
 
 const initialState = {
 	isLoading: false,
@@ -15,6 +24,14 @@ export default (state = initialState, action) => {
 				user: null,
 				token: null,
 				isAuthenticated: false
+			};
+
+		case LOGGED_IN:
+			return {
+				isLoading: false,
+				user: action.payload.user,
+				token: action.payload.token,
+				isAuthenticated: true
 			};
 
 		case REGISTER:

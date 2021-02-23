@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Text, ActivityIndicator } from 'react-native';
+import { checkUser } from '../Redux/Actions/authAuctions';
 
 const RootNavigator = () => {
-	const auth = useSelector(state => state.auth);
+	const dispatch = useDispatch();
 
+	useEffect(() => {
+		dispatch(checkUser());
+	}, []);
+	const auth = useSelector(state => state.auth);
 	if (auth.isLoading) {
 		return (
 			<View

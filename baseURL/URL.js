@@ -1,10 +1,8 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useDispatch } from 'react-redux';
-import { error } from '../Redux/Actions/authAuctions';
 
 const instance = axios.create({
-	baseURL: '',
+	baseURL: 'https://5225eb28139d.ngrok.io',
 	headers: {
 		'Content-Type': 'application/json'
 	}
